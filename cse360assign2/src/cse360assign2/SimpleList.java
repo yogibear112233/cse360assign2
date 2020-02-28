@@ -1,5 +1,8 @@
 package cse360assign2;
 
+/*
+ * URL to Github: https://github.com/yogibear112233/cse360assign2
+ */
 
 /*
  * @author Yogendra Awatramani
@@ -48,7 +51,7 @@ public class SimpleList {
 		}
 
 		
-		//adds element to the front of the list
+		//adds element to list and increases array size
 		else if(count == list.length) {
 			
 			changeArraySize(count + (count * (1/2)));
@@ -68,7 +71,7 @@ public class SimpleList {
 		else {
 
 			for (int index = count; index >= 0; index--) {
-				list[index + 1] = list[index];
+				list[index] = list[index--];
 			}
 
 			list[0] = number;
@@ -81,6 +84,7 @@ public class SimpleList {
 	}
 	
 	
+	//method to increase and decrease array size
 	
 	public void changeArraySize(int size) {
 		
@@ -98,8 +102,9 @@ public class SimpleList {
 		
 		list = newList;
 		
+		if(size< count) {
 		count = size;
-	}
+	}}
 	}
 	/**
 	 * Removes the element specified in the parameter. If number does not exist it does not remove the element.
@@ -129,6 +134,7 @@ public class SimpleList {
 	}
 
 	
+	//method appends the number to the array
 	public void append(int number) {
 		
 		if (count == list.length) {
@@ -190,11 +196,13 @@ public class SimpleList {
 	}
 	
 	
+	//size method to return size of array
 	public int size() {
 		return list.length;
 		
 	}
 	
+	//method returns first element
 	public int first() {
 		
 		if (count > 0) {
@@ -207,6 +215,7 @@ public class SimpleList {
 		}
 	}
 	
+	//method returns last element
 	public int last() {
 		
 		if (count > 0) {
