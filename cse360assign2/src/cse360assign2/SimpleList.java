@@ -49,7 +49,23 @@ public class SimpleList {
 
 		
 		//adds element to the front of the list
-		else if (count < 10) {
+		else if(count == list.length) {
+			
+			changeArraySize(count + (count * (1/2)));
+			
+			for (int index = count; index >= 0; index--) {
+				list[index] = list[index--];
+			}
+
+			list[0] = number;
+			count++;
+			
+			
+		}
+		
+		
+		
+		else {
 
 			for (int index = count; index >= 0; index--) {
 				list[index + 1] = list[index];
@@ -59,22 +75,32 @@ public class SimpleList {
 
 			count++;
 
-		}
+		}	
 		
-		
-		//removes last element if more than ten elements and adds to the front
-		else {
-			remove(list[list.length-1]);
-			for (int index = count; index >= 0; index--) {
-				list[index + 1] = list[index];
-			}
-
-			list[0] = number;
-			
-		}
 
 	}
-
+	
+	
+	
+	public void changeArraySize(int size) {
+		
+		if (size < 1) {
+			return;
+		}
+		
+		else {
+		int newList [] =  new int[size];
+		int index = 0;
+		
+		for (index = 0; index< count && index < size; index++) {
+			newList[index] = list[index];
+		}
+		
+		list = newList;
+		
+		count = size;
+	}
+	}
 	/**
 	 * Removes the element specified in the parameter. If number does not exist it does not remove the element.
 	 * @param number the integer that gets removed from the array of numbers
@@ -94,8 +120,24 @@ public class SimpleList {
 
 			count--;
 		}
+		
+		int decreaseArray = list.length * (3/4);
+		
+		if (count < decreaseArray) {
+			changeArraySize(decreaseArray);
+		}
 	}
 
+	
+	public void append(int number) {
+		
+		if (count == list.length) {
+			changeArraySize(count + (count * (1/2)));
+		}
+		
+		list[count] = number;
+		count++;
+	}
 	/**
 	 * Returns the number of elements in the array
 	 * @return returns the count variable that stores the number of elements in the array
@@ -146,5 +188,42 @@ public class SimpleList {
 
 		return strReturn;
 	}
+	
+	
+	public int size() {
+		return list.length;
+		
+	}
+	
+	public int first() {
+		
+		if (count > 0) {
+			return list[0];
+		
+		}
+		
+		else {
+			return -1;
+		}
+	}
+	
+	public int last() {
+		
+		if (count > 0) {
+			return -1;
+					
+		}
+		
+		else {
+			return list[count-1];
+		}
+	}
+	
+	
+	
+	
+	
+	
+	}
 
-}
+
